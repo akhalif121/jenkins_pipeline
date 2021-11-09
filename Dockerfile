@@ -2,7 +2,7 @@
 # BudgetTracker Dockerfile for UI 
 #
 FROM ubuntu:latest
-MAINTAINER "abdullah@gmail.com"
+MAINTAINER "adam.khalif@outlook.com"
 
 USER root
 
