@@ -1,0 +1,26 @@
+{
+    "containerDefinitions": [
+        {
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/abdullah-jenkins-ecs-app",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "cpu": 250,
+            "memoryReservation": 420,
+            "image": "489994096722.dkr.ecr.us-east-2.amazonaws.com/abdullah_jenkins_ecr",
+            "name": "abdullah-jenkins-ecs-app"
+        }
+    ],
+    "memory": "1024",
+    "family": "task",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "512",
+    "executionRoleArn":"ecsTaskExecutionRole"
+}
