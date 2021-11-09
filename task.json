@@ -11,8 +11,8 @@
             },
             "cpu": 250,
             "memoryReservation": 420,
-            "image": "489994096722.dkr.ecr.us-east-2.amazonaws.com/abdullah_jenkins_ecr",
-            "name": "abdullah-jenkins-ecs-app"
+            "image": "366047659530.dkr.ecr.us-east-2.amazonaws.com/docker-static:latest",
+            "name": "enkins-ecs-app"
         }
     ],
     "memory": "1024",
