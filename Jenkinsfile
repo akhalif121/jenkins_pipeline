@@ -2,10 +2,9 @@
 def app = 'Unknown'
 pipeline{
     // agent { label 'slave || slave-jnlpx' }
-    agent { label 'slave1' }
+    agent any   
     environment {
         IMAGE_TAG="latest"
-        JOB_NAME = "Notify_Slack"
         BRANCH_NAME = "Main"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"  
     }
@@ -13,8 +12,8 @@ pipeline{
         string(name: 'ENVIRONMENT', defaultValue: 'DEV', description: 'Where should I deploy?')
         string(name: 'service_name', defaultValue: 'app', description: 'Pick Service to Deploy')
         text(name: 'AWS_DEFAULT_REGION', defaultValue: 'us-east-2', description: 'Enter region')
-        text(name: 'AWS_ACCOUNT_ID', defaultValue: '489994096722', description: 'Enter id')
-        text(name: 'IMAGE_REPO_NAME', defaultValue: 'abdullah_jenkins_ecr', description: 'Enter repo')
+        text(name: 'AWS_ACCOUNT_ID', defaultValue: '366047659530', description: 'Enter id')
+        text(name: 'IMAGE_REPO_NAME', defaultValue: 'docker-static', description: 'Enter repo')
     }         
     stages{  
         stage('Logging into AWS ECR') {
@@ -64,22 +63,10 @@ pipeline{
         stage("Update service"){
             steps{
                 script {
-                    sh "aws ecs update-service --cluster abdullah-jenkins-fargate --service ${params.service_name} --task-definition task --desired-count 1"
+                    sh "aws ecs update-service --cluster jenkins-fargate --service ${params.service_name} --task-definition task --desired-count 1"
                 }
             }
         }                     
     }
-        post {
-            success {
-                script {
-                    if ( env.BRANCH_NAME == 'Main')
-                    {
-                        slacksuccess.success()
-                    }    
-                    else {
-                        slacksuccess.failure()
-                    }
-            }           
-        } 
-    }    
+   
 }         
