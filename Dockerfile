@@ -2,7 +2,6 @@
 # BudgetTracker Dockerfile for UI 
 #
 FROM ubuntu:latest
-MAINTAINER "adam.khalif@outlook.com"
 
 USER root
 
