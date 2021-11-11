@@ -28,7 +28,7 @@ pipeline {
         stage('Terraform deployment stage') {
             steps {
                 script {
-                    sh 'terraform apply -var-file=./config/dev/dev.tfvars --auto-approve'
+                    sh 'terraform apply -var-file=./config/dev.tfvars --auto-approve'
                 }
         }        
     }     
