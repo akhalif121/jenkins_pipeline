@@ -1,4 +1,4 @@
-# Jenkins Pipeline to Automate ECS Task Deployment
+# Jenkins Pipeline to Automate Containerized Application Provisioned with TerrForm
 
 This pipeline deployes and AWS ECS cluster with complete needed resources scripted with terraform.
 
